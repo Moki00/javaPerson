@@ -5,7 +5,6 @@ This is a simple Java project that demonstrates the structure and setup of a Jav
 ## Project Structure
 
 ```
-my-java-project
 ├── src
 │   └── Main.java
 ├── lib
