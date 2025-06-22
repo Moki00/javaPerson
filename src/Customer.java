@@ -57,6 +57,10 @@ public class Customer {
         }
         this.phoneNumber = phoneNumber;
     }
+
+    /** Override toString method to provide a string representation of the Customer object.
+     * @return A string representation of the Customer object.
+     */
     @Override
     public String toString() {
         return "Customer{" +
@@ -64,6 +68,12 @@ public class Customer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+    /**
+     * Checks if two Customer objects are equal based on their name and phone number.
+     * @param o The object to compare with.
+     * @return true if the objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,10 +81,16 @@ public class Customer {
         Customer customer = (Customer) o;
         return name.equals(customer.name) && phoneNumber.equals(customer.phoneNumber);
     }
+
+    /**
+     * Generates a hash code for the Customer object based on its name and phone number.
+     * @return A hash code value for this object.
+     */
     @Override
     public int hashCode() {
         return 31 * name.hashCode() + phoneNumber.hashCode();
     }
+    
     /**
      * Returns a string representation of the customer.
      * @return A string containing the customer's name and phone number.

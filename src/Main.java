@@ -1,56 +1,63 @@
 public class Main {
     public static void main(String[] args) {
         
-        // Example usage of the Customer class
+        // tryCatch with the Customer class
         try {
-            Customer customer = new Customer("John Doe", "123-456-7890");
-            System.out.println(customer);
+            // 1. Create a new Customer object
+            System.out.println("--- Creating a Customer object ---");
+            Customer customer1 = new Customer("John Doe", "123-456-7890");
+            System.out.println(customer1);
             
-            customer.setName("Jane Smith");
-            customer.setPhoneNumber("098-765-4321");
-            System.out.println(customer);
+            // change name and phone number
+            customer1.setName("Jane Smith");
+            customer1.setPhoneNumber("098-765-4321");
+            System.out.println(customer1);
             
-            // the following line will throw an exception
-            Customer invalidCustomer = new Customer("","123-456-7890");
+            // throw an exception
+            Customer nameBlank = new Customer("","123-456-7890");
+            System.out.println("-----------Can you see this?????????????????"+nameBlank); // This line will not be executed due to the exception
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
-        // Additional code can be added here to further test or use the Customer class
 
-               // 1. Create a new Customer object
-        System.out.println("--- Creating a Customer object ---");
-        Customer customer1 = new Customer("Alice Smith", "555-123-4567");
-        System.out.println("Customer Created: " + customer1);
-        customer1.getCustomerInfo(); // Initial info
+        // new try-catch block to demonstrate the Customer class functionality
+        try{
+
+
+        Customer customer2 = new Customer("Alice Smith", "555-123-4567");
+        System.out.println("Customer Created: " + customer2);
+        System.out.println("Line 24: "+customer2.getCustomerInfo()); // Initial info
 
         // 2. Use getter methods to retrieve values
         System.out.println("\n--- Using Getter Methods ---");
-        String currentName = customer1.getName();
-        String currentPhoneNumber = customer1.getPhoneNumber();
+        String currentName = customer2.getName();
+        String currentPhoneNumber = customer2.getPhoneNumber();
         System.out.println("Retrieved Customer Name: " + currentName);
         System.out.println("Retrieved Phone Number: " + currentPhoneNumber);
 
         // 3. Use setter methods to modify values
         System.out.println("\n--- Using Setter Methods ---");
-        customer1.setName("Bob Johnson");
-        customer1.setPhoneNumber("555-987-6543");
-        // customer1.displayInfo(); // Info after modification
+        customer2.setName("Bob Johnson");
+        customer2.setPhoneNumber("555-987-6543");
+        // customer2.displayInfo(); // Info after modification
 
         // 4. Demonstrate setter validation
         System.out.println("\n--- Demonstrating Setter Validation ---");
-        customer1.setName(""); // Attempt to set an invalid name
-        customer1.setPhoneNumber(null);  // Attempt to set an invalid phone number
-        // customer1.displayInfo(); // Should still show "Bob Johnson", "555-987-6543"
+        customer2.setName(""); // Attempt to set an invalid name
+        customer2.setPhoneNumber(null);  // Attempt to set an invalid phone number
+        // customer2.displayInfo(); // Should still show "Bob Johnson", "555-987-6543"
 
         // 5. Create another customer and modify
         System.out.println("\n--- Another Customer ---");
-        Customer customer2 = new Customer("Charlie Brown", "555-111-2222");
-        // customer2.displayInfo();
-        customer2.setPhoneNumber("555-333-4444");
-        customer2.setName("Charles Davis");
-        // customer2.displayInfo();
+        Customer customer3 = new Customer("Charlie Brown", "555-111-2222");
+        // customer3.displayInfo();
+        customer3.setPhoneNumber("555-333-4444");
+        customer3.setName("Charles Davis");
+        // customer3.displayInfo();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
         
     }
-    
 
 }
