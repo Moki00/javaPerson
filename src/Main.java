@@ -1,59 +1,73 @@
 public class Main {
     public static void main(String[] args) {
         
-        // tryCatch with the Customer class
+        // Customer #1
+        System.out.println("=== Customer Management System ===");
+        System.out.println("This program demonstrates the Customer class functionality.\n");
+        System.out.println("=== Customer #1 ===");
         try {
-            // 1. Create a new Customer object
-            System.out.println("--- Creating a Customer object ---");
             Customer customer1 = new Customer("John Doe", "123-456-7890");
             System.out.println(customer1);
             
-            // change name and phone number
+            // modify with setters
+            System.out.println("--- Modify with setters ---");
             customer1.setName("Jane Smith");
             customer1.setPhoneNumber("098-765-4321");
             System.out.println(customer1);
             
             // throw an exception
-            Customer nameBlank = new Customer("","123-456-7890");
-            System.out.println("-----------Can you see this?????????????????"+nameBlank); // This line will not be executed due to the exception
+            System.out.println("--Throw error:"); // This line will not be executed due to the exception
+            customer1.setPhoneNumber(""); // Attempt to set an invalid phone number
+            System.out.println("Updated Customer: " + customer1); // This line will not be executed due to the exception
         } catch (IllegalArgumentException e) {
             System.err.println("Error: " + e.getMessage());
         }
 
-        // new try-catch block to demonstrate the Customer class functionality
+        // Customer #2
+        System.out.println("\n=== Customer #2 ===");
         try{
+            Customer customer2 = new Customer("Alice Smith", "555-123-4567");
+            System.out.println("-Customer Created: " + customer2);
+            System.out.println("2 ways to do the same: "+customer2.getCustomerInfo());
 
+            // Use getter methods to retrieve values
+            System.out.println("\n--- Using Getter Methods ---");
+            String currentName = customer2.getName();
+            String currentPhoneNumber = customer2.getPhoneNumber();
+            System.out.println("get Customer Name: " + currentName);
+            System.out.println("get Phone Number: " + currentPhoneNumber);
 
-        Customer customer2 = new Customer("Alice Smith", "555-123-4567");
-        System.out.println("Customer Created: " + customer2);
-        System.out.println("Line 24: "+customer2.getCustomerInfo()); // Initial info
+            // Use setter methods to modify values
+            System.out.println("\n--- Using Setter to modify ---");
+            customer2.setName("Bob Johnson");
+            customer2.setPhoneNumber("555-987-6543");
+            System.out.println("Updated Customer: " + customer2);
 
-        // 2. Use getter methods to retrieve values
-        System.out.println("\n--- Using Getter Methods ---");
-        String currentName = customer2.getName();
-        String currentPhoneNumber = customer2.getPhoneNumber();
-        System.out.println("Retrieved Customer Name: " + currentName);
-        System.out.println("Retrieved Phone Number: " + currentPhoneNumber);
+            // setter validation
+            System.out.println("\n--- Demonstrating Setter Validation ---");
+            customer2.setName(""); // Attempt to set an invalid name
+            customer2.setPhoneNumber(null);  // Attempt to set an invalid phone number
+            System.out.println("Updated Customer: " + customer2); // This line will not be executed due to the exception
 
-        // 3. Use setter methods to modify values
-        System.out.println("\n--- Using Setter Methods ---");
-        customer2.setName("Bob Johnson");
-        customer2.setPhoneNumber("555-987-6543");
-        // customer2.displayInfo(); // Info after modification
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
 
-        // 4. Demonstrate setter validation
-        System.out.println("\n--- Demonstrating Setter Validation ---");
-        customer2.setName(""); // Attempt to set an invalid name
-        customer2.setPhoneNumber(null);  // Attempt to set an invalid phone number
-        // customer2.displayInfo(); // Should still show "Bob Johnson", "555-987-6543"
+        
 
-        // 5. Create another customer and modify
-        System.out.println("\n--- Another Customer ---");
-        Customer customer3 = new Customer("Charlie Brown", "555-111-2222");
-        // customer3.displayInfo();
-        customer3.setPhoneNumber("555-333-4444");
-        customer3.setName("Charles Davis");
-        // customer3.displayInfo();
+        // Customer #3
+        System.out.println("\n=== Customer #3 ===");
+        try{
+            Customer customer3 = new Customer("Charlie Brown", "555-111-2222");
+            System.out.println("-Customer Created: " + customer3);
+            customer3.setPhoneNumber("555-333-4444");
+            customer3.setName("Charles Davis");
+            System.out.println("Updated Customer: " + customer3);
+
+            // throw an exception
+            System.out.println("\n--Throw error:");
+            Customer nameBlank = new Customer("","123-456-7890");
+            System.out.println("-----Not executed-----"+nameBlank);
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }
